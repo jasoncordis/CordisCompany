@@ -1,0 +1,146 @@
+﻿@model IEnumerable<CordisCompany.Models.message>
+
+@{
+    ViewBag.Title = "Messages";
+}
+
+<!--Messages page shows list of all messages and allows user to select invidual messages to view-->
+
+ <div id="messagesPage">
+
+        <h2>Messages</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+
+        <div id="messageList">
+            <!-- Table list for full list of messages-->
+            <table class="table">
+                <tr style="line-height: 14px;">
+                    <th>
+                        Sender
+                    </th>
+                    <th style="text-overflow: clip;">
+                        Date
+                    </th>
+                    <th>
+                        Commands
+                    </th>
+                    <th></th>
+                </tr>
+
+                @{
+                    <!-- counter is used to create unique ids for the HTML elements for each message-->
+                    int counter = 1;
+                }
+
+                <!-- Each message has its own column in the orders table containing information specific to the message model-->
+                @foreach (var item in Model)
+                {
+                    <tr style="line-height: 5px;">
+                        <td>
+                            <!--Clicking on sender's name will display the full message on message div using Javascript message() function in Content/javascript.js-->
+                            <a onClick="message(@counter)">
+                                <p id="sender@(counter)"> @Html.DisplayFor(modelItem => item.sender) </p>
+                            </a>
+                        </td>
+                        <td>
+                            <p id="date@(counter)">@Html.DisplayFor(modelItem => item.edate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                        <td style="visibility: collapse; font-size: 1px;">
+                            <p id="email@(counter)"> @Html.DisplayFor(modelItem => item.email) </p>
+                        </td>
+                    </tr>
+                    counter = counter+1;
+                }
+
+            </table>
+
+        </div>
+
+
+        <!--Individual messages are displayed in the message div-->
+
+        <div id="message">
+
+            <div style="display:flex; flex-wrap:nowrap;">
+                <h3 class="header" style="padding-right: 15px; padding-left: 15px;">Sender:</h3>
+
+                <div class="skills" style="padding-top: 25px; margin-right: -30px;">
+                    <p id='pSender'></p>
+                </div>
+            </div>
+            <div style="display:flex; flex-wrap:nowrap;">
+                <h3 class="header" style="padding-right: 15px; padding-left: 15px;">Date:</h3>
+
+                <div class="skills" style="padding-top: 25px; margin-right: -30px;">
+                    <p id="pDate"></p>
+                </div>
+            </div>
+            <div style="display:flex; flex-wrap:nowrap;">
+                <h3 class="header" style="padding-right: 15px; padding-left: 15px;">Message:</h3>
+
+                <div class="skills" style="padding-top: 25px; margin-right: -30px; padding-right: 50px;">
+                    <p id='pMessage'></p>
+                </div>
+            </div>
+            <div style="display:flex; flex-wrap:nowrap;">
+                <h3 class="header" style="padding-right: 15px; padding-left: 15px;">Attachment:</h3>
+                <img id="attach" alt="attachment" />
+                <input type="text" style=" width: 30%; height: 30%; padding-top:30px; padding-bottom: 30px;" />
+                <button id="myBtn" style= " width: 10%; height: 10%;">Reply</button>
+
+            </div>
+        </div>
+ </div>
+</div>
+ <div id = "attachSpace">
+     @Html.ActionLink("You have 8mb of company attachments.", "Index")
+ </div>
+<style>
+
+    .messagesPage {
+        display: inline-block;
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    #attach {
+        width: 25%;
+        height:25%; 
+        padding-bottom: 30px;
+    }
+
+    #message {
+        width: 50%; 
+        float:left; 
+        height:60%; 
+        background:white; 
+        margin-left:10px; 
+        padding-bottom: 10px;
+    }
+
+    #attachSpace {
+        padding-top: 30px;
+        width: 100%; 
+        float:left; 
+        padding-bottom: 10px;
+    }
+
+    #messageList {
+        width: 25%; 
+        float: left; 
+        height: 100%; 
+        background: white; 
+        overflow-y: auto; 
+        overflow: scroll;
+    }
+
+</style>

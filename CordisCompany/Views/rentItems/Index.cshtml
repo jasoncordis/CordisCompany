@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CordisCompany.Models.rentItem>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<!--Orders page shows all of the user's orders and current progress of their shipment.-->
+
+    <div class="orderPage">
+
+        <h2>Orders</h2>
+
+        <!-- Table for the full list of user orders -->
+        <table class="table" style="background-color:white;">
+            <tr>
+                <th>
+                    Item
+                </th>
+                <th>
+                    Reach (ft)
+                </th>
+                <th>
+                    Reach (in)
+                </th>
+                <th>
+                    Ship from
+                </th>
+                <th>
+                    Progress
+                </th>
+                <th></th>
+            </tr>
+
+
+            <!-- Each rentItem has its own column in the orders table containing information specific to the rentItem model-->
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reach1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reach2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.style)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.progress)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="margin-left:10px;">
+                            <span class=glyphicon glyphicon-inbox /> ⸻  <span class="glyphicon glyphicon-road " /> ⸻  <span class="glyphicon glyphicon-home " />
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <style>
+        .orderPage {
+            display: inline-block;
+            width: 85%;
+            box-sizing: border-box;
+        }
+    </style>

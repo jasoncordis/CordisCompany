@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Training";
+}
+
+<!--Training page consists of instructional videos that are categorized by level of experience-->
+
+<div class="trainingPage">
+    <h2> Training </h2>
+    <div id="info1">
+        <h2 style="margin-left: 12px;">Getting started</h2>
+        <p style="font-size: 12px;  margin-left: 12px; margin-right: 15px">
+            Pumping is an efficient, reliable and economical means of placing concrete, and sometimes the only way of getting concrete into certain locations.
+        </p>
+        <p style="font-size: 12px; margin-left: 12px; margin-right: 15px;">
+            Other times, simply the ease and speed of pumping concrete make it the most economical method of concrete placement. In the end, the convenience of easy access for truck mixers must be weighed against the desirability of locating the pump closer to the placement point.
+        </p>
+    </div>
+    <div id="video1">
+        <video width="320" height="240" controls>
+            <source src="~/video/3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</div>
+
+<div id="video2">
+    <video width="320" height="240" controls>
+        <source src="~/video/2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div id="info2">
+    <h2>Intermediate</h2>
+    <p style="font-size: 12px;  margin-left: 5px; margin-right: 15px">
+        Pumping is an efficient, reliable and economical means of placing concrete, and sometimes the only way of getting concrete into certain locations.
+    </p>
+    <p style="font-size: 12px; margin-left: 5px; margin-right: 15px;">
+        Other times, simply the ease and speed of pumping concrete make it the most economical method of concrete placement. In the end, the convenience of easy access for truck mixers must be weighed against the desirability of locating the pump closer to the placement point.
+    </p>
+</div>
+
+
+<div id="info3">
+    <h2>Advanced</h2>
+    <p style="font-size: 12px;  margin-left: 4px; margin-right: 14px;">
+        Pumping is an efficient, reliable and economical means of placing concrete, and sometimes the only way of getting concrete into certain locations.
+    </p>
+    <p style="font-size: 12px; margin-left: 4px; margin-right: 14px;">
+        Other times, simply the ease and speed of pumping concrete make it the most economical method of concrete placement. In the end, the convenience of easy access for truck mixers must be weighed against the desirability of locating the pump closer to the placement point.
+    </p>
+</div>
+
+<div id="video3">
+    <video width="320" height="240" controls>
+        <source src="~/video/1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</div>
+
+<div id = "signup">
+    @Html.ActionLink("Sign up for more training", "Training")
+</div>
+
+<style>
+    .trainingPage {
+        display: inline-block;
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    #info1 {
+        width: 300px;
+        float: left;
+        height: 400px;
+        background: white;
+        margin: 10px;
+    }
+
+    #video1 {
+        width: 400px;
+        float: left;
+        height: 400px;
+        margin: 10px;
+        margin-left: 50px;
+    }
+
+    #video2 {
+        width: 400px;
+        float: left;
+        height: 400px;
+        margin-left: 15%;
+    }
+
+    #info2 {
+        width: 300px;
+        float: left;
+        height: 400px;
+        background: white;
+        margin: 10px;
+        padding-left: 20px;
+    }
+
+    #info3 {
+        width: 300px;
+        float: left;
+        height: 400px;
+        background: white;
+        padding-left: 20px;
+        margin-left: 15%;
+    }
+
+    #video3 {
+        width: 400px;
+        float: left;
+        height: 400px;
+        margin: 10px;
+        margin-left: 70px;
+        margin-top: 50px;
+    }
+
+    #signup {
+        width: 100%; 
+        float:left; 
+        padding-bottom: 10px;
+    }
+</style>
+

@@ -1,0 +1,274 @@
+﻿@model CordisCompany.Models.rentItem
+
+@{
+    ViewBag.Title = "Rentals";
+}
+
+<!-- The rental page is used to browse items and make orders -->
+
+    <div class="rentalPage">
+
+        <h2>Rentals</h2>
+
+        <!-- Both rental items have a description and an HTML form which will be used for POST requests to update the server-->
+
+        <div id = "rentInfo1">
+            <h2 style="margin-left: 12px;">TZ Mountain Lion</h2>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Horizontal Reach: 53' 9"
+            </h3>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Ships from: Hercules, CA
+            </h3>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Style: Roll & Fold
+            </h3>
+            <p style="font-size: 12px; margin-left: 12px; margin-right: 12px;">
+                Concrete pumps are machines used to transfer liquid concrete from one area to another via steel or flexible concrete placing hoses.
+            </p>
+        </div>
+
+        <div id = "rentImgForm1">
+
+            <img src="~/images/pump1.jpg" style="width:400px;height:300px;">
+
+         <!--The HTML form contains all information about the item that is specified in the rentItems model. When submitting the form, all of the
+             form info is used to makes a POST request in the server which adds the order, and then redirects the user to the Orders page to view their orders. -->
+
+            @using (Html.BeginForm())
+            {
+                Random rnd = new Random();
+                int id1 = rnd.Next(1, 1000);
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @Value = id1 } })
+                            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.itemName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.itemName, new { htmlAttributes = new { @class = "form-control", @Value = "TZ Mountain Lion" } })
+                            @Html.ValidationMessageFor(model => model.itemName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.reach1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.reach1, new { htmlAttributes = new { @class = "form-control", @Value = 53 } })
+                            @Html.ValidationMessageFor(model => model.reach1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.reach2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.reach2, new { htmlAttributes = new { @class = "form-control", @Value = 9 } })
+                            @Html.ValidationMessageFor(model => model.reach2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.imgString, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.imgString, new { htmlAttributes = new { @class = "form-control", @Value = "~/img/pump1.jpg" } })
+                            @Html.ValidationMessageFor(model => model.imgString, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.style, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.style, new { htmlAttributes = new { @class = "form-control", @Value = "Hercules, CA" } })
+                            @Html.ValidationMessageFor(model => model.style, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.progress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.progress, new { htmlAttributes = new { @class = "form-control", @Value = 7 } })
+                            @Html.ValidationMessageFor(model => model.progress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input style="margin-left:70px;" type="submit" value="Order" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+
+
+        <div id= "rentInfo2">
+            <h2 style="margin-left: 12px;">ProZ Grizzly Bear</h2>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Horizontal Reach: 61' 2"
+            </h3>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Ships from: Richmond, CA
+            </h3>
+            <h3 style="font-size: 20px;  margin-left: 12px; margin-right: 15px">
+                Style: Roll & Fold
+            </h3>
+            <p style="font-size: 12px; margin-left: 12px; margin-right: 12px;">
+                Concrete pumps are machines used to transfer liquid concrete from one area to another via steel or flexible concrete placing hoses.
+            </p>
+        </div>
+
+
+        <div id = "rentImgForm2">
+
+            <img src="~/images/pump2.jpg" style="width:400px;height:300px;">
+
+
+
+            @using (Html.BeginForm())
+            {
+                Random rnd = new Random();
+                int id2 = rnd.Next(1000, 2000);
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @Value = id2 } })
+                            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.itemName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.itemName, new { htmlAttributes = new { @class = "form-control", @Value = "ProZ Grizzly Bear" } })
+                            @Html.ValidationMessageFor(model => model.itemName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.reach1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.reach1, new { htmlAttributes = new { @class = "form-control", @Value = 61 } })
+                            @Html.ValidationMessageFor(model => model.reach1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.reach2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.reach2, new { htmlAttributes = new { @class = "form-control", @Value = 2 } })
+                            @Html.ValidationMessageFor(model => model.reach2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.imgString, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.imgString, new { htmlAttributes = new { @class = "form-control", @Value = "~/img/pump2.jpg" } })
+                            @Html.ValidationMessageFor(model => model.imgString, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: none">
+                        @Html.LabelFor(model => model.style, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.style, new { htmlAttributes = new { @class = "form-control", @Value = "Richmond, CA" } })
+                            @Html.ValidationMessageFor(model => model.style, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.progress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.progress, new { htmlAttributes = new { @class = "form-control", @Value = 8 } })
+                            @Html.ValidationMessageFor(model => model.progress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input style="margin-left:70px;" type="submit" value="Order" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    <div id = "listOrders">
+        @Html.ActionLink("List Orders", "Index")
+    </div>
+
+
+
+
+    <style>
+
+        .rentalPage {
+            display: inline-block;
+            width: 85%;
+            box-sizing: border-box;
+        }
+
+        #listOrders {
+            width: 100%;
+            float: left;
+            padding-bottom: 10px;
+        }
+
+        #rentInfo1 {
+            width: 300px; 
+            float:left; 
+            height:400px; 
+            background:white;
+        }
+
+        #rentImgForm1 {
+            width: 400px; 
+            float:left; 
+            height:400px; 
+            background:white; 
+            margin-left:10px;
+        }
+
+        #rentInfo2 {
+            width: 300px; 
+            float:left; 
+            height:400px; 
+            background:white; 
+            margin-top: 10px;
+        }
+
+        #rentImgForm2 {
+            width: 400px;
+            float: left;
+            height: 400px;
+            background: white;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Locations";
+}
+
+
+<!--Locations page is used for briefing on new job location updates and uses Google Maps API-->
+
+<div class="locationsPage">
+    <h2 style="color:black; padding-right:10px;">Location Briefing</h2>
+
+    <div id="briefDiv1">
+        <h3 style="padding-left:10px;">Current Job:  </h3>
+        <ul>
+            <li>Client located in Rodeo, CA</li>
+            <li>Transporting approximately 50 tons</li>
+            <li>Remember to keep all safety gear on</li>
+        </ul>
+
+        <p style="font-size: 12px;  margin-left: 15px; margin-right: 15px">
+            The San Francisco Refinery is an oil refinery complex located in Rodeo, California and in Arroyo Grande, California, in the San Francisco Bay Area and Santa Maria Valley.
+        </p>
+        <div style="padding-left:10px;">
+            <!--Buttons call Javascript functions inside of Content/javascript.js to change map source-->
+            <button id="myBtn" onClick="mapView()">Map view</button>
+            <button onClick="streetView()">Street view</button>
+        </div>
+
+    </div>
+    <div id="mapDiv">
+        <!--iFrame Google map uses my Google API key to make requests and output map and street views of Bay Area locations-->
+        <iframe id='fMap' width="400" height="400" style="border:0" loading="lazy" allowfullscreen
+                src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJe4ykk7BnhYARVkIEJ1eYELQ&destination=place_id:ChIJVS6ZdlZxhYARVaSbyJrxEN0&key=AIzaSyAUjsZnogjOUGhIJbRsEC7XhmPEGup07KI&origin=place_id:ChIJe4ykk7BnhYARVkIEJ1eYELQ"></iframe>
+    </div>
+</div>
+
+<div id="mapUpdates">
+    @Html.ActionLink("Sign up for map updates", "Locations")
+</div>
+
+</div>
+
+<style>
+
+    #briefDiv1 {
+        width: 300px;
+        float: left;
+        height: 400px;
+        background: white;
+        margin: 10px;
+        padding-top: 10px;
+    }
+
+    #mapDiv {
+        width: 400px;
+        float: left;
+        height: 400px;
+        background: white;
+        margin: 10px;
+    }
+
+    .locationsPage {
+        display: inline-block;
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    #mapUpdates {
+        padding-top: 15px;
+        width: 100%;
+        float: left;
+        padding-bottom: 10px;
+    }
+
+</style>
